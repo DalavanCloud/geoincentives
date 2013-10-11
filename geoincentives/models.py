@@ -24,8 +24,14 @@ class EventType(models.Model):
     max_checkin = models.IntegerField()
 
 class Event(models.Model):
+    EVENT_STATUS = (
+        (1, 'student'),
+        (2, 'business')
+    )
+
     name = models.CharField(max_length=255, null=True, blank=False)
     type = models.ForeignKey(EventType, null=True, blank=True)
+    status = models.CharField(max_length=100, null=True, blank=False, choices=EVENT_STATUS)
     start_time = models.CharField(max_length=5, null=True, blank=False)
     end_time = models.CharField(max_length=5, null=True, blank=False)
     date = models.DateField()
