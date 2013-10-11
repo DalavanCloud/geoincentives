@@ -22,9 +22,17 @@ class Event(models.Model):
     type = models.ForeignKey(EventType, null=True, blank=True)
     start_time = models.CharField(max_length=5, null=True, blank=False)
     end_time = models.CharField(max_length=5, null=True, blank=False)
-    day = models.DateField()
+    date = models.DateField()
     point_value = models.IntegerField()
     recurring = models.Booleanfield()
 
+class UserEvent(models.Model):
+    user = models.ForeignKey(User, null=True, blank=True)
+    event = models.ForeignKey(Event, null=True, blank=True)
+    date = models.DateField()
 
+class rewards(models.Model):
+    name = models.CharField(max_length=255, null=True, blank=False)
+    available = models.IntegerField()
+    points = models.IntegerField()
 
