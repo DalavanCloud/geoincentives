@@ -32,6 +32,12 @@ class Event(models.Model):
     point_value = models.IntegerField()
     recurring = models.Booleanfield()
     verified = models.Booleanfield()
+    address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
+    city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
+    state = models.CharField(max_length=30, null=True, db_index=True, blank=False)
+    zipcode = models.CharField(max_length=5, null=True, db_index=True, blank=False)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
 class UserEvent(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
