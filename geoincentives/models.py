@@ -1,8 +1,14 @@
 from django.db import models
 
 class User(models.Model):
+    USER_TYPE = (
+        (1, 'student'),
+        (2, 'business')
+    )
+
     username = models.CharField(max_length=100, null=True, blank=False)
     password = models.CharField(max_length=100, null=True, blank=False)
+    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
     email = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     first_name = models.CharField(max_length=128, null=True, blank=False)
     last_name = models.CharField(max_length=128, null=True, blank=False)
@@ -25,6 +31,7 @@ class Event(models.Model):
     date = models.DateField()
     point_value = models.IntegerField()
     recurring = models.Booleanfield()
+    verified = models.Booleanfield()
 
 class UserEvent(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
