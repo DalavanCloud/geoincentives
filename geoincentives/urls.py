@@ -4,7 +4,8 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('geoincentives.views',
+    url(r'^$', 'home', name='home'),
     # Examples:
     # url(r'^$', 'geoincentives.views.home', name='home'),
     # url(r'^geoincentives/', include('geoincentives.foo.urls')),
