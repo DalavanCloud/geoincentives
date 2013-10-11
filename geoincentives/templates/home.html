@@ -1,1 +1,84 @@
-<h1>Hello world</h1>
+{% extends "base.html" %}
+
+{% block head_extra %}
+    <link href="css/home.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- Main jumbotron for a primary marketing message or call to action
+    -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>
+          Student Rewards for Activities
+        </h1>
+        <p>
+          T1 - This is where you describe in 2 sentences what Geo Incentives is
+          and does.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-lg">Learn more »</a>
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>
+            H1 - Student
+          </h2>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
+            ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+            sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+            odio dui.
+          </p>
+          <p>
+            <a class="btn btn-default" href="#">Apply »</a>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h2>
+            H2 - Businesses
+          </h2>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
+            ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+            sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+            odio dui.
+          </p>
+          <p>
+            <a class="btn btn-default" href="#">Apply »</a>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h2>
+            H3 - Non-profit Orgs
+          </h2>
+          <p>
+            Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas
+            eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus,
+            tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
+            massa justo sit amet risus.
+          </p>
+          <p>
+            <a class="btn btn-default" href="#">Apply »</a>
+          </p>
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>
+          © New Incentives 2013
+        </p>
+      </footer>
+    </div>
+    <!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+    >
+    </script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    >
+    </script>
+{% endblock %}
