@@ -36,3 +36,10 @@ def user(request):
         'user.html', {
         }
     )
+
+def signup(request):
+    return jinja2_render_to_response(
+        'signup.html', {
+            'login_form': UserLoginForm()
+        }
+    )
