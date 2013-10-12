@@ -21,6 +21,7 @@ class User(models.Model):
     zipcode = models.CharField(max_length=5, null=True, db_index=True, blank=False)
     school = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     birthdate = models.DateField(blank=True, null=True)
+    points = models.IntegerField(null=True, blank=True)
 
     def __unicode__(self):
             return u'%s %s' % (self.auth_user.first_name, self.auth_user.last_name)
@@ -43,7 +44,7 @@ class Event(models.Model):
     status = models.IntegerField(max_length=100, null=True, blank=False, choices=EVENT_STATUS)
     start_time = models.CharField(max_length=5, null=True, blank=False)
     end_time = models.CharField(max_length=5, null=True, blank=False)
-    date = models.DateField()
+    date = models.DateField(null=True, blank=True)
     point_value = models.IntegerField()
     recurring = models.BooleanField()
     verified = models.BooleanField()
@@ -51,8 +52,8 @@ class Event(models.Model):
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)
     zipcode = models.CharField(max_length=5, null=True, db_index=True, blank=False)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
     def __unicode__(self):
             return u'%s' % self.name
