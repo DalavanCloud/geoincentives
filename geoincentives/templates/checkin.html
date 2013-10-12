@@ -11,28 +11,39 @@
       <h3 class="text-left">
         Where are you checking in?
       </h3>
-        <div class="row-fluid">
-          <div class="span8">
-            <div class="btn-group btn-group-vertical">
-               <button class="btn" type="button"><em class="icon-align-left"></em></button> <button class="btn" type="button"><em class="icon-align-center"></em></button> <button class="btn" type="button"><em class="icon-align-right"></em></button> <button class="btn" type="button"><em class="icon-align-justify"></em></button>
+      <div class="row-fluid">
+        <p></p>
+
+        <div class="span8">
+            <div class="list-group">
+              <a href="#" class="list-group-item">Piedmont Hills High School</a>
             </div>
-          </div>
-          <div class="span4">
-            <div class="btn-group btn-group-vertical">
-               <button class="btn" type="button"><em class="icon-align-left"></em></button> <button class="btn" type="button"><em class="icon-align-center"></em></button> <button class="btn" type="button"><em class="icon-align-right"></em></button> <button class="btn" type="button"><em class="icon-align-justify"></em></button>
-            </div>
-          </div>
         </div>
-      <div class="btn-group">
-         <button class="btn">Mt. Pleasant High School</button> <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        
+        
+        <div class="span8">
+            <div class="list-group">
+              <a href="#" class="list-group-item">Piedmont Hills High School</a>
+            </div>
+        </div>
 
-          {% for e in events %}
-            <li><a href="#">{{ e.name }}</a></li>
-          {% endfor %}
+        
+        <div class="span8">
+            <div class="list-group">
+              <a href="#" class="list-group-item">Piedmont Hills High School</a>
+            </div>
+        </div>
+        
 
-        </ul>
-      </div> <button class="btn" type="button">Check-In</button>
+        {% for e in events %}
+        <div class="span8">
+            <div class="list-group">
+              <a href="#" class="list-group-item">{{ e.name }}</a>
+            </div>
+        </div>
+        {% endfor %}
+        
+      </div>
     </div>
   </div>
 </div>
