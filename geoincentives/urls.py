@@ -10,6 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('geoincentives.views',
     url(r'^$', 'home', name='home'),
+    url(r'^checkin/$', 'checkin', name='checkin'),
 
     # Examples:
     # url(r'^$', 'geoincentives.views.home', name='home'),
@@ -22,3 +23,6 @@ urlpatterns = patterns('geoincentives.views',
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+urlpatterns = urlpatterns + patterns('',
+	(r'^login/$', 'django.contrib.auth.views.login'),
+)

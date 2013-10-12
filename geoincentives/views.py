@@ -1,38 +1,32 @@
 from coffin.shortcuts import render_to_response as jinja2_render_to_response
 from geoincentives.forms import UserLoginForm
+
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.core.context_processors import csrf
+
 from geoincentives.models import User
 
 def home(request):
 
-    if request.method == 'POST':
-        form = UserLoginForm(request.POST)
-
-        if form.is_valid():
-            try:
-                User.objects.get(
-                    email=form.cleaned_data['email'],
-                    password= form.cleaned_data['password'],
-                    # should encrypt password=User.hash_password(form.cleaned_data['password'])
-                )
-            except:
-                return jinja2_render_to_response(
-                    'home.html', {
-                        'login_form': form
-                    }
-                )
-
-            return HttpResponseRedirect('/user')
-
+    context = {}
+    context.update(csrf(request))
 
     return jinja2_render_to_response(
-        'home.html', {
-            'login_form': UserLoginForm()
-        }
+        'home.html', context
     )
 
-def user(request):
+@login_required(login_url='/login/')
+def checkin(request):
+
+    print request.session
+    from IPython import embed; embed()
+
+    events = [] request.user.get_nearby_events()
+
     return jinja2_render_to_response(
-        'user.html', {
+        'checkin.html', {
+            'events': events,
         }
     )
