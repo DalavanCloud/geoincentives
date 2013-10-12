@@ -1,0 +1,19 @@
+<div class="span3">
+      <ul class="nav nav-list">
+        <li{% if request.path == '/checkin/' %} class="active"{% endif %}>
+          <a href="/checkin/">Check-In</a>
+        </li>
+        <li>
+          <a href="#">Points</a>
+        </li>
+        <li{% if request.path == '/redemption/' %} class="active"{% endif %}>
+          <a href="/redemption/">Redeem</a>
+        </li>
+        <li{% if request.path == '/useraccount/' %} class="active"{% endif %}>
+          <a href="/useraccount/">Profile</a>
+        </li>
+        <li>
+          <a href="#">Help</a>
+        </li>
+      </ul>
+</div>

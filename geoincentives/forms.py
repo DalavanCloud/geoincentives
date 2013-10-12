@@ -43,6 +43,12 @@ class SignupForm(forms.Form):
         label='Last Name',
         widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control GINGER_SOFATWARE_control', }),
     )
+    company = forms.CharField(
+        required=False,
+        max_length=128,
+        label='Company',
+        widget=forms.TextInput(attrs={'placeholder': 'Company', 'class': 'form-control GINGER_SOFATWARE_control', }),
+    )
     address = forms.CharField(
         max_length=255,
         label='Address',
@@ -64,14 +70,16 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'Zip Code', 'class': 'form-control GINGER_SOFATWARE_control', }),
     )
     school = forms.CharField(
+        required=False,
         max_length=255,
         label='School',
         widget=forms.TextInput(attrs={'placeholder': 'School', 'class': 'form-control GINGER_SOFATWARE_control', }),
     )
     birthdate = forms.CharField(
+        required=False,
         max_length=100,
         label='Birth Date',
-        widget=forms.DateInput(format="YYYY-MM-DD", attrs={'placeholder': 'Birth Date mm/dd/yyyy', 'class': 'form-control GINGER_SOFATWARE_control', }),
+        widget=forms.DateInput(format="YYYY-MM-DD", attrs={'placeholder': 'Birth Date YYYY-MM-DD', 'class': 'form-control GINGER_SOFATWARE_control', }),
     )
 
 

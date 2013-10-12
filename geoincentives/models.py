@@ -8,11 +8,13 @@ import hashlib
 class User(models.Model):
     USER_TYPE = (
         (1, 'student'),
-        (2, 'business')
+        (2, 'business'),
+        (3, 'nonprofit')
     )
 
     auth_user = models.OneToOneField(DjangoUser)
-    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
+    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE, default=USER_TYPE[1])
+    company = models.CharField(max_length=255, null=True, db_index=True, blank=True)
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)
@@ -20,13 +22,15 @@ class User(models.Model):
     school = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     birthdate = models.DateField(blank=True, null=True)
 
-    @classmethod
-    def hash_password(cls, password):
-        return hashlib.sha224(password).hexdigest()
+    def __unicode__(self):
+            return u'%s %s' % (self.auth_user.first_name, self.auth_user.last_name)
 
 class EventType(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False)
     max_checkin = models.IntegerField()
+
+    def __unicode__(self):
+            return u'%s' % self.name
 
 class Event(models.Model):
     EVENT_STATUS = (
@@ -50,13 +54,22 @@ class Event(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
 
+    def __unicode__(self):
+            return u'%s' % self.name
+
 class UserEvent(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
     event = models.ForeignKey(Event, null=True, blank=True)
     date = models.DateField()
 
+    def __unicode__(self):
+            return u'%s %s' % (self.user.username, self.event.name)
+
 class Reward(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False)
     available = models.IntegerField()
     points = models.IntegerField()
+
+    def __unicode__(self):
+            return u'%s' % (self.name)
 
