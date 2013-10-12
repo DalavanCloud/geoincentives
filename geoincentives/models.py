@@ -12,7 +12,7 @@ class User(models.Model):
     )
 
     auth_user = models.OneToOneField(DjangoUser)
-    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
+    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE, default=USER_TYPE[1])
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)

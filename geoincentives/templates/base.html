@@ -14,7 +14,7 @@
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
         <script src="/static/js/main.js"></script>
-        <script 
+        <script
           src="http://maps.googleapis.com/maps/api/js?v=3.10&sensor=false">
           </script>
 
@@ -34,7 +34,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
         <link rel="shortcut icon" href="img/favicon.png">
-        
+
         <script type="text/javascript" src="/static/js/scripts.js"></script>
 
         {% block head_extra %}
@@ -85,12 +85,13 @@
                 </li>
               </ul>
 
+              {% if not request.user %}
               <form method="post" action="/login/" class="navbar-form navbar-right">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
 
                 <input type="hidden" name="next" value="/checkin" />
 
- 
+
                 <div class="form-group">
                     <input class="form-control" id="id_email" maxlength="255" name="username" placeholder="Email" type="text">
                   <!--<input type="text" placeholder="Email" class="form-control">-->
@@ -102,6 +103,7 @@
                   Sign in
                 </button>
               </form>
+              {% endif %}
 
             </div>
             <!--/.navbar-collapse -->

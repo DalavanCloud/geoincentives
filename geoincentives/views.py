@@ -14,6 +14,7 @@ def home(request):
 
     context = {}
     context.update(csrf(request))
+    context['request'] = request
 
     return jinja2_render_to_response(
         'home.html', context
@@ -28,6 +29,7 @@ def history(request):
     return jinja2_render_to_response(
         'eventhistory.html', {
             'events': events,
+            'request': request
         }
     )
 
@@ -37,7 +39,7 @@ def useraccount(request):
 
     return jinja2_render_to_response(
         'useraccount.html', {
-            #'events': events,
+            'request': request
         }
     )
 
@@ -50,6 +52,7 @@ def redemption(request):
     return jinja2_render_to_response(
         'redemption.html', {
             'events': events,
+            'request': request
         }
     )
 
@@ -64,12 +67,13 @@ def checkin(request):
     return jinja2_render_to_response(
         'checkin.html', {
             'events': events,
+            'request': request
         }
     )
 
 @csrf_protect
 def signup(request):
-    context = {}
+    context = { 'request': request}
     context.update(csrf(request))
 
     if request.method == 'POST':
