@@ -17,6 +17,7 @@ def home(request):
     context = {}
     context.update(csrf(request))
     context['request'] = request
+    context['is_authenticated'] = request.user.is_authenticated()
 
     return jinja2_render_to_response(
         'home.html', context
@@ -25,12 +26,14 @@ def home(request):
 @login_required(login_url='/login/')
 def history(request):
 
-    events = [] #request.user.get_nearby_events()
+    history = UserEvent.objects.all().filter(user=request.user).order_by('date')
+    #from IPython import embed; embed()
 
     return jinja2_render_to_response(
         'eventhistory.html', {
-            'events': events,
-            'request': request
+            'history': history,
+            'request': request,
+            'is_authenticated': request.user.is_authenticated()
         }
     )
 
@@ -39,7 +42,8 @@ def useraccount(request):
 
     return jinja2_render_to_response(
         'useraccount.html', {
-            'request': request
+            'request': request,
+            'is_authenticated': request.user.is_authenticated()
         }
     )
 
@@ -50,7 +54,8 @@ def redemption(request):
     return jinja2_render_to_response(
         'redemption.html', {
             'events': events,
-            'request': request
+            'request': request,
+            'is_authenticated': request.user.is_authenticated()
         }
     )
 
@@ -78,11 +83,12 @@ def checkin(request):
     events = Event.objects.raw('select * from geoincentives_event where ((latitude - %(cur_lat)s) * (latitude - %(cur_lat)s)) + ((longitude - %(cur_lng)s * (longitude - %(cur_lng)s)) < 200)' % { 'cur_lat': cur_lat, 'cur_lng': cur_lng})
     #((cur_lat - 37.3768341) * (cur_lat - 37.3768341)) + ((cur_lng - -121.9227413 * (cur_lng - -121.9227413)) < 200)
     #from IPython import embed; embed()
-  
+
     return jinja2_render_to_response(
         'checkin.html', {
             'events': events,
-            'request': request
+            'request': request,
+            'is_authenticated': request.user.is_authenticated()
         }
     )
 
@@ -97,7 +103,7 @@ def signup(request, type=None):
     if not type:
         type = 1
 
-    context = { 'request': request, 'type': type }
+    context = { 'request': request, 'type': int(type), 'is_authenticated': request.user.is_authenticated() }
     context.update(csrf(request))
 
     if request.method == 'POST':
@@ -124,7 +130,7 @@ def signup(request, type=None):
             )
 
             if (form.cleaned_data['birthdate']):
-                user['birthdate'] = form.cleaned_data['birthdate']
+                user.birthdate = form.cleaned_data['birthdate']
 
             user.save()
 

@@ -91,7 +91,7 @@
                 </li>
               </ul>
 
-              {% if request.user and not request.user.is_authenticated() %}
+              {% if not is_authenticated %}
               <form method="post" action="/login/" class="navbar-form navbar-right">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
 
