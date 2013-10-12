@@ -29,15 +29,22 @@
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
           {{ signup_form.first_name|safe }}
           {{ signup_form.last_name|safe }}
+          {% if type != 1 %}
+          {{ signup_form.company|safe }}
+          {% endif %}
           {{ signup_form.username|safe }}
+          {% if type == 1 %}
           {{ signup_form.birthdate|safe }}
+          {% endif %}
           {{ signup_form.password|safe }}
           {{ signup_form.email|safe }}
           {{ signup_form.address|safe }}
           {{ signup_form.city|safe }}
           {{ signup_form.state|safe }}
           {{ signup_form.zipcode|safe }}
+          {% if type == 1 %}
           {{ signup_form.school|safe }}
+          {% endif %}
           <input type="submit" name="Sign me up" />
       </form>
     <div class="container">

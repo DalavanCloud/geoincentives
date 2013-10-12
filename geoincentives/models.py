@@ -8,11 +8,13 @@ import hashlib
 class User(models.Model):
     USER_TYPE = (
         (1, 'student'),
-        (2, 'business')
+        (2, 'business'),
+        (3, 'nonprofit')
     )
 
     auth_user = models.OneToOneField(DjangoUser)
     type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE, default=USER_TYPE[1])
+    company = models.CharField(max_length=255, null=True, db_index=True, blank=True)
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)

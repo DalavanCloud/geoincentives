@@ -72,8 +72,11 @@ def checkin(request):
     )
 
 @csrf_protect
-def signup(request, type=1):
-    context = { 'request': request}
+def signup(request, type=None):
+    if not type:
+        type = 1
+
+    context = { 'request': request, 'type': type }
     context.update(csrf(request))
 
     if request.method == 'POST':
@@ -96,9 +99,12 @@ def signup(request, type=1):
                 state=form.cleaned_data['state'],
                 zipcode=form.cleaned_data['zipcode'],
                 school=form.cleaned_data['school'],
-                birthdate=form.cleaned_data['birthdate'],
                 type=type
             )
+
+            if (form.cleaned_data['birthdate']):
+                user['birthdate'] = form.cleaned_data['birthdate']
+
             user.save()
 
             return HttpResponseRedirect('/checkin/')
