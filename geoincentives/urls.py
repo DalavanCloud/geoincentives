@@ -1,3 +1,7 @@
+import os
+
+from django.conf import settings
+from django.conf.urls.static import static
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
@@ -6,6 +10,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('geoincentives.views',
     url(r'^$', 'home', name='home'),
+    
     # Examples:
     # url(r'^$', 'geoincentives.views.home', name='home'),
     # url(r'^geoincentives/', include('geoincentives.foo.urls')),
@@ -15,4 +20,5 @@ urlpatterns = patterns('geoincentives.views',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
