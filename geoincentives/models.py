@@ -1,4 +1,5 @@
 from django.db import models
+import hashlib
 
 class User(models.Model):
     USER_TYPE = (
@@ -19,6 +20,10 @@ class User(models.Model):
     school = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     birthdate = models.DateField(blank=True, null=True)
 
+    @classmethod
+    def hash_password(cls, password):
+        return hashlib.sha224(password).hexdigest()
+
 class EventType(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False)
     max_checkin = models.IntegerField()
@@ -36,8 +41,8 @@ class Event(models.Model):
     end_time = models.CharField(max_length=5, null=True, blank=False)
     date = models.DateField()
     point_value = models.IntegerField()
-    recurring = models.Booleanfield()
-    verified = models.Booleanfield()
+    recurring = models.BooleanField()
+    verified = models.BooleanField()
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)
