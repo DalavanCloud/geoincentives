@@ -3,8 +3,8 @@
         <li{% if request.path == '/checkin/' %} class="active"{% endif %}>
           <a href="/checkin/">Check-In</a>
         </li>
-        <li>
-          <a href="#">Points</a>
+        <li{% if request.path == '/history/' %} class="active"{% endif %}>
+          <a href="/history/">Points</a>
         </li>
         <li{% if request.path == '/redemption/' %} class="active"{% endif %}>
           <a href="/redemption/">Redeem</a>
