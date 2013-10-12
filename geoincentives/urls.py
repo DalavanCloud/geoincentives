@@ -15,6 +15,7 @@ urlpatterns = patterns('geoincentives.views',
     url(r'^history/$', 'history', name='history'),
     url(r'^useraccount/$', 'useraccount', name='useraccount'),
     url(r'^redemption/$', 'redemption', name='redemption'),
+    url(r'^ajax_checkin/$', 'ajax_checkin', name='ajax_checkin'),
 
     url(r'^signup/(\d*)$', 'signup', name='signup'),
 

@@ -26,14 +26,23 @@ def home(request):
 @login_required(login_url='/login/')
 def history(request):
 
+<<<<<<< HEAD
+    events = UserEvent.objects.get(user=request.user)
+
+    return jinja2_render_to_response(
+        'eventhistory.html', {
+            'events': events,
+            'request': request,
+            'is_authenticated': request.user.is_authenticated()
+=======
     history = UserEvent.objects.all().filter(user=request.user).order_by('date')
     #from IPython import embed; embed()
 
     return jinja2_render_to_response(
         'eventhistory.html', {
             'history': history,
-            'request': request,
-            'is_authenticated': request.user.is_authenticated()
+            'request': request
+>>>>>>> origin/master
         }
     )
 

@@ -29,8 +29,26 @@
 					</tr>
 				</thead>
 				<tbody>
+<<<<<<< HEAD
+					{% for user_event in user_events %}
+						{% if total %}
+							{% set total = total + user_event.event.point_value %}
+						{% else %}
+							{% set total = user_event.event.point_value %}
+						{% endif %}
+
+						<tr>
+							<td>{{ user_event.date }}</td>
+							<td>Check-in: {{ user_event.event.name }}</td>
+							<td>{{ user_event.event.point_value }}</td>
+							<td>{{ total }}</td>
+						</tr>
+					{% endfor %}
+<!--
+=======
 
 					{% for e in history %}
+>>>>>>> origin/master
 					<tr>
 						<td>
 							{{ e.date }}
@@ -134,7 +152,12 @@
 						<td>
 							6,800
 						</td>
+<<<<<<< HEAD
+					</tr>
+				-->
+=======
 					</tr -->
+>>>>>>> origin/master
 				</tbody>
 			</table> <button class="btn btn-primary pull-right" type="button">Redeem</button>
 		</div>

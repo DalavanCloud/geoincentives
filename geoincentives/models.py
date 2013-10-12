@@ -59,7 +59,7 @@ class Event(models.Model):
             return u'%s' % self.name
 
 class UserEvent(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(DjangoUser, null=True, blank=True)
     event = models.ForeignKey(Event, null=True, blank=True)
     date = models.DateField()
 
