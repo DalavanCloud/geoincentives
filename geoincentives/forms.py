@@ -82,8 +82,19 @@ class SignupForm(forms.Form):
         widget=forms.DateInput(format="YYYY-MM-DD", attrs={'placeholder': 'Birth Date YYYY-MM-DD', 'class': 'form-control GINGER_SOFATWARE_control', }),
     )
 
-
-
+class PaypalSignupForm(forms.Form):
+    school = forms.CharField(
+        required=False,
+        max_length=255,
+        label='School',
+        widget=forms.TextInput(attrs={'placeholder': 'School', 'class': 'form-control GINGER_SOFATWARE_control', }),
+    )
+    company = forms.CharField(
+        required=False,
+        max_length=128,
+        label='Company',
+        widget=forms.TextInput(attrs={'placeholder': 'Company', 'class': 'form-control GINGER_SOFATWARE_control', }),
+    )
 
 
 
