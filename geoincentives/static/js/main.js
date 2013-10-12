@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    initAddressAutoComplete();
+    /// initAddressAutoComplete();
 });
 
 function initGeoCoder() {
@@ -7,6 +7,23 @@ function initGeoCoder() {
     });
     document._geocoder = geocoder;
 }
+
+/*
+
+
+    <div class="address-autocomplete-holder">
+      <form><fieldset>
+      <input type="text" class="address" id="address" 
+      list="address-autocomplete-list" autocomplete="on" placeholder="Enter your address"/>
+      <datalist id="address-autocomplete-list" class="autocompletes">
+        <select>
+        </select>
+      </datalist>
+      <button class="btn btn-m btn-g">Submit</button>
+      </fieldset></form>
+    </div>
+
+*/
 
 function initAddressAutoComplete() {
     initGeoCoder();
@@ -25,9 +42,10 @@ function initAddressAutoComplete() {
 
         if (! timeout) {
             timeout = setTimeout(function() {
-                $this.data('autocomplete_timeout', null)
-//            $('datalist').css('display','block');
+                $this.data('autocomplete_timeout', null);
+                //$('datalist').css('display','block');
                 // API doesn't return anything for just numbers
+
                 if (val.match(/[A-Za-z]/)) {
                     populateAutoComplete($this.val(), $this);
                 }
@@ -57,12 +75,15 @@ function populateAutoComplete(str, $elem) {
             $autocomplete_area.html(' ');
 
             addresses.forEach(function(address, i) {
+                alert(address);
                 $autocomplete_area.append('<option value="' + address + '">' + address + '</option>');
             });
-            $('.autocompletes').updatePolyfill();
+
+            //$('.autocompletes').updatePolyfill();
 
         }
     });
+
 }
 
 function getAutoCompleteAddresses(results) {
