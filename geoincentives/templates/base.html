@@ -39,10 +39,11 @@
 
         {% block head_extra %}
         {% endblock %}
+        
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,7 +53,7 @@
               </button>
               <a class="navbar-brand" href="#">
                 <div>
-                  <img src="/static/img/geoincentives-logo.png">
+                  <img src="/static/img/geoincentives-logo_1.png">
                 </div>
               </a>
             </div>
@@ -107,6 +108,8 @@
                   Sign in
                 </button>
               </form>
+              {% else %}
+                <a href="#checkin"><button class="btn" type="button">Check-In</button></a>
               {% endif %}
 
             </div>
