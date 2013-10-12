@@ -103,7 +103,7 @@ def signup(request, type=None):
     if not type:
         type = 1
 
-    context = { 'request': request, 'type': type, 'is_authenticated': request.user.is_authenticated() }
+    context = { 'request': request, 'type': int(type), 'is_authenticated': request.user.is_authenticated() }
     context.update(csrf(request))
 
     if request.method == 'POST':
