@@ -43,22 +43,23 @@
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
+        <div class="navbar navbar-inverse navbar-static-top" style="margin: 0px 0px 10px 0px;">
+          
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">
-                <div>
-                  <img src="/static/img/geoincentives-logo_1.png">
-                </div>
+              <a href="/" class="navbar-brand">
+                <img src="/static/img/geoincentives-logo_1.png">
               </a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+                <li>
+                  
+                </li>
                 <li{% if request.path == '/' %} class="active"{% endif %}>
                   <a href="/">Home</a>
                 </li>
@@ -109,12 +110,12 @@
                 </button>
               </form>
               {% else %}
-                <a href="#checkin"><button class="btn" type="button">Check-In</button></a>
+                <a href="/checkin/"><button class="btn btn-danger" type="button">Check-In</button></a>
               {% endif %}
 
             </div>
             <!--/.navbar-collapse -->
-          </div>
+          
         </div>
 
         {% block content %}{% endblock %}
