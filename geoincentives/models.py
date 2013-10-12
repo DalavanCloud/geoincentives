@@ -9,7 +9,7 @@ class User(models.Model):
 
     username = models.CharField(max_length=100, null=True, blank=False)
     password = models.CharField(max_length=100, null=True, blank=False)
-    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
+    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE, default=USER_TYPE[1])
     email = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     first_name = models.CharField(max_length=128, null=True, blank=False)
     last_name = models.CharField(max_length=128, null=True, blank=False)
@@ -30,8 +30,8 @@ class EventType(models.Model):
 
 class Event(models.Model):
     EVENT_STATUS = (
-        (1, 'student'),
-        (2, 'business')
+        (1, 'active'),
+        (2, 'inactive')
     )
 
     name = models.CharField(max_length=255, null=True, blank=False)

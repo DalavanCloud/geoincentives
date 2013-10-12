@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_protect
 
 from geoincentives.models import User
 
@@ -21,29 +22,33 @@ def home(request):
 def checkin(request):
 
     print request.session
-    from IPython import embed; embed()
+    #from IPython import embed; embed()
 
-    events = [] request.user.get_nearby_events()
+    # events = [] request.user.get_nearby_events()
 
+    events = []
     return jinja2_render_to_response(
         'checkin.html', {
             'events': events,
         }
     )
 
+@csrf_protect
 def signup(request):
+    context = {}
+    context.update(csrf(request))
 
     if request.method == 'POST':
         form = SignupForm(request.POST)
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/checkin')
+            return HttpResponseRedirect('/checkin/')
 
+        print form.errors
+
+    context['signup_form'] = SignupForm()
 
     return jinja2_render_to_response(
-        'signup.html', {
-            'signup_form': SignupForm(),
-            'login_form': UserLoginForm()
-        }
+        'signup.html', context
     )
