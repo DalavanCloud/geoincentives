@@ -2,7 +2,7 @@ from coffin.shortcuts import render_to_response as jinja2_render_to_response
 from geoincentives.forms import SignupForm
 
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate, login, logout
+#from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
@@ -73,6 +73,12 @@ def checkin(request):
             'request': request
         }
     )
+
+def logout(request):
+    request.session.clear()
+    request.session.flush()
+    return HttpResponseRedirect('/')
+
 
 @csrf_protect
 def signup(request, type=None):
