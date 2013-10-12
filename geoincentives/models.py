@@ -55,7 +55,7 @@ class UserEvent(models.Model):
     event = models.ForeignKey(Event, null=True, blank=True)
     date = models.DateField()
 
-class rewards(models.Model):
+class Reward(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False)
     available = models.IntegerField()
     points = models.IntegerField()
