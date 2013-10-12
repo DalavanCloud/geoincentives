@@ -1,4 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User as DjangoUser
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import UserManager
+
 import hashlib
 
 class User(models.Model):
@@ -7,12 +11,9 @@ class User(models.Model):
         (2, 'business')
     )
 
-    username = models.CharField(max_length=100, null=True, blank=False)
-    password = models.CharField(max_length=100, null=True, blank=False)
-    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE, default=USER_TYPE[1])
-    email = models.CharField(max_length=255, null=True, db_index=True, blank=False)
-    first_name = models.CharField(max_length=128, null=True, blank=False)
-    last_name = models.CharField(max_length=128, null=True, blank=False)
+    user = user = models.OneToOneField(DjangoUser)
+    
+    type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)
