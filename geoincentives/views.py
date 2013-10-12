@@ -25,11 +25,12 @@ def home(request):
 @login_required(login_url='/login/')
 def history(request):
 
-    events = [] #request.user.get_nearby_events()
+    history = UserEvent.objects.all().filter(user=request.user).order_by('date')
+    #from IPython import embed; embed()
 
     return jinja2_render_to_response(
         'eventhistory.html', {
-            'events': events,
+            'history': history,
             'request': request
         }
     )

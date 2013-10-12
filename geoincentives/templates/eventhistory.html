@@ -29,15 +29,17 @@
 					</tr>
 				</thead>
 				<tbody>
+
+					{% for e in history %}
 					<tr>
 						<td>
-							10/7/13
+							{{ e.date }}
 						</td>
 						<td>
-							Check-in: School
+							Check-in: {{ e.event.type }}
 						</td>
 						<td>
-							200
+							{{ e.event.point_value }}
 						</td>
 						<td>
 							-
@@ -46,7 +48,9 @@
 							10,000
 						</td>
 					</tr>
-					<tr>
+					{% endfor %}
+
+					<!-- tr>
 						<td>
 							10/8/13
 						</td>
@@ -130,7 +134,7 @@
 						<td>
 							6,800
 						</td>
-					</tr>
+					</tr -->
 				</tbody>
 			</table> <button class="btn btn-primary pull-right" type="button">Redeem</button>
 		</div>
