@@ -1,14 +1,16 @@
+import datetime
+
 from coffin.shortcuts import render_to_response as jinja2_render_to_response
 from geoincentives.forms import SignupForm
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 #from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.models import User as DjangoUser
 
-from geoincentives.models import User, Event
+from geoincentives.models import User, Event, UserEvent
 
 def home(request):
 
@@ -35,7 +37,6 @@ def history(request):
 @login_required(login_url='/login/')
 def useraccount(request):
 
-
     return jinja2_render_to_response(
         'useraccount.html', {
             'request': request
@@ -44,8 +45,6 @@ def useraccount(request):
 
 @login_required(login_url='/login/')
 def redemption(request):
-
-
     events = [] #request.user.get_nearby_events()
 
     return jinja2_render_to_response(
@@ -56,6 +55,19 @@ def redemption(request):
     )
 
 #-121.9227413 37.3768341
+
+@login_required(login_url='/login/')
+def ajax_checkin(request):
+
+    event_id = request.GET.get('event')
+    event = Event.objects.get(id=event_id)
+
+    row = UserEvent(user=request.user, event=event, date=datetime.datetime.now())
+    row.save()
+
+    return HttpResponse('ok')
+
+
 
 @login_required(login_url='/login/')
 def checkin(request):
