@@ -20,13 +20,15 @@ class User(models.Model):
     school = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     birthdate = models.DateField(blank=True, null=True)
 
-    @classmethod
-    def hash_password(cls, password):
-        return hashlib.sha224(password).hexdigest()
+    def __unicode__(self):
+            return u'%s %s' % (self.auth_user.first_name, self.auth_user.last_name)
 
 class EventType(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False)
     max_checkin = models.IntegerField()
+
+    def __unicode__(self):
+            return u'%s' % self.name
 
 class Event(models.Model):
     EVENT_STATUS = (
@@ -50,13 +52,22 @@ class Event(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
 
+    def __unicode__(self):
+            return u'%s' % self.name
+
 class UserEvent(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
     event = models.ForeignKey(Event, null=True, blank=True)
     date = models.DateField()
 
+    def __unicode__(self):
+            return u'%s %s' % (self.user.username, self.event.name)
+
 class Reward(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False)
     available = models.IntegerField()
     points = models.IntegerField()
+
+    def __unicode__(self):
+            return u'%s' % (self.name)
 
