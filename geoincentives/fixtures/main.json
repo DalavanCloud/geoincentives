@@ -1,0 +1,200 @@
+[
+{
+  "pk": 1, 
+  "model": "geoincentives.user", 
+  "fields": {
+    "city": "94087", 
+    "school": "Del Mar High School", 
+    "company": null, 
+    "zipcode": "94087", 
+    "birthdate": "1988-03-08", 
+    "state": "California", 
+    "points": null, 
+    "address": "125 Debussy, Sunnyvale", 
+    "auth_user": 4, 
+    "type": "1"
+  }
+},
+{
+  "pk": 1, 
+  "model": "geoincentives.eventtype", 
+  "fields": {
+    "max_checkin": 10, 
+    "name": "School"
+  }
+},
+{
+  "pk": 1, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "Sunnyvale", 
+    "verified": false, 
+    "name": "Paypal", 
+    "recurring": false, 
+    "start_time": "12", 
+    "zipcode": "94087", 
+    "longitude": -121.9227413, 
+    "latitude": 37.3768341, 
+    "state": "California", 
+    "point_value": 100, 
+    "end_time": "12", 
+    "address": "125 Debussy Terrace", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 2, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "Sunnyvale", 
+    "verified": false, 
+    "name": "Kansas", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "94087", 
+    "longitude": -98.380173, 
+    "latitude": 38.484726, 
+    "state": "California", 
+    "point_value": 300, 
+    "end_time": "1234", 
+    "address": "125 Debussy Terrace", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 3, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "Sunnyvale", 
+    "verified": false, 
+    "name": "Santa Cruz", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "94087", 
+    "longitude": -122.008614, 
+    "latitude": 37.037128, 
+    "state": "California", 
+    "point_value": 400, 
+    "end_time": "1234", 
+    "address": "125 Debussy Terrace", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 4, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Abraham Lincoln High School", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.92422, 
+    "latitude": 37.32914, 
+    "state": "California", 
+    "point_value": 100, 
+    "end_time": "1234", 
+    "address": "555 Dana Avenue", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 5, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Bellarmine College Preparatory", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.91917, 
+    "latitude": 37.34249, 
+    "state": "California", 
+    "point_value": 300, 
+    "end_time": "1234", 
+    "address": "960 West Hedding Street", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 6, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Notre Dame High School", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.8823, 
+    "latitude": 37.3282, 
+    "state": "California", 
+    "point_value": 300, 
+    "end_time": "1234", 
+    "address": "596 South 2nd Street", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 7, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Del Mar High School", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.92912, 
+    "latitude": 37.30494, 
+    "state": "California", 
+    "point_value": 100, 
+    "end_time": "1234", 
+    "address": "1224 Del Mar Avenue", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 1, 
+  "model": "geoincentives.userevent", 
+  "fields": {
+    "date": "2013-10-12", 
+    "user": 3, 
+    "event": 4
+  }
+},
+{
+  "pk": 2, 
+  "model": "geoincentives.userevent", 
+  "fields": {
+    "date": "2013-10-12", 
+    "user": 3, 
+    "event": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "geoincentives.userevent", 
+  "fields": {
+    "date": "2013-10-12", 
+    "user": 3, 
+    "event": 7
+  }
+}
+]

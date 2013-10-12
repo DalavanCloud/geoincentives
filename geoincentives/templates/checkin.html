@@ -54,25 +54,11 @@ $(".event_clicks").click(function(e){
     $.ajax( {
         type: 'GET',
         url: '/ajax_checkin/',
-        // dataType: "json",
         data: {'event': e.target.getAttribute('data')},
 
         success: function ( data, textStatus, jqXHR) {
-            
-            if ( data.status ) { // success
-                //alert('yes');
-                //location.reload( true ); // refresh page, no cache
-            }
-            else { // error
-                //alert('error');
-                //$(modalSelector).replaceWith(data.content);
-                //$(modalSelector).removeClass('hidden')
-                //$(modalSelector).center();
-
-                // initialize select box
-                //initSelectBox( selectBoxConfig );
-            }
-          },
+            e.target.innerHTML='<b>Checked In!</b>';
+        },
 
         error: function (jqXHR, textStatus, errorThrown) {
             debug("error: " + textStatus);

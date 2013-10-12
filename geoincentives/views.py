@@ -67,11 +67,11 @@ def ajax_checkin(request):
     event_id = request.GET.get('event')
     event = Event.objects.get(id=event_id)
 
-    row = UserEvent(user=request.user, event=event, date=datetime.datetime.now())
-    row.save()
+    row, created = UserEvent.objects.get_or_create(
+        event=event, user=request.user, date=datetime.datetime.now()
+    )
 
     return HttpResponse('ok')
-
 
 
 @login_required(login_url='/login/')
