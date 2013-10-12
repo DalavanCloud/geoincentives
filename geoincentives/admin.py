@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import User as DjangoUser
-from geoincentives.models import User, EventType, Event, Reward
+from geoincentives.models import User, EventType, Event, Reward, UserEvent
 
 class UserAdmin(admin.ModelAdmin):
     list_display = (
@@ -25,6 +25,12 @@ class EventAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'type'
+    )
+
+class UserEventAdmin(admin.ModelAdmin):
+    list_display = (
+        'user',
+        'event'
     )
 
 class EventTypeAdmin(admin.ModelAdmin):
@@ -54,5 +60,6 @@ class RewardAdmin(admin.ModelAdmin):
 admin.site.register(User) #, UserAdmin)
 
 admin.site.register(Event, EventAdmin)
+admin.site.register(UserEvent, UserEventAdmin)
 admin.site.register(EventType, EventTypeAdmin)
 admin.site.register(Reward, RewardAdmin)

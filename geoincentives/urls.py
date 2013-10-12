@@ -10,12 +10,14 @@ admin.autodiscover()
 
 urlpatterns = patterns('geoincentives.views',
     url(r'^$', 'home', name='home'),
+    url(r'^logout/$', 'logout', name='logout'),
     url(r'^checkin/$', 'checkin', name='checkin'),
     url(r'^history/$', 'history', name='history'),
     url(r'^useraccount/$', 'useraccount', name='useraccount'),
     url(r'^redemption/$', 'redemption', name='redemption'),
+    url(r'^ajax_checkin/$', 'ajax_checkin', name='ajax_checkin'),
 
-    url(r'^signup/$', 'signup', name='signup'),
+    url(r'^signup/(\d*)$', 'signup', name='signup'),
 
     # Examples:
     # url(r'^$', 'geoincentives.views.home', name='home'),

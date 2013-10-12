@@ -6,27 +6,7 @@
 {% block content %}
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span3">
-      <ul class="nav nav-list">
-        <li class="active">
-          <a href="#">Check-In</a>
-        </li>
-        <li>
-          <a href="#">Points</a>
-        </li>
-        <li>
-          <a href="#">Redeem</a>
-        </li>
-        <li>
-          <a href="#">Profile</a>
-        </li>
-        <li class="divider">
-        </li>
-        <li>
-          <a href="#">Help</a>
-        </li>
-      </ul>
-    </div>
+    {% include "includes/sidenav.html" %}
     <div class="span9">
       <h3 class="text-left">
         Where are you checking in?
@@ -34,15 +14,11 @@
       <div class="btn-group">
          <button class="btn">Mt. Pleasant High School</button> <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li>
-            <a href="#">Mt. Pleasant High School</a>
-          </li>
-          <li>
-            <a href="#">Andrew Hill High School</a>
-          </li>
-          <li>
-            <a href="#">Independence High school</a>
-          </li>
+
+          {% for e in events %}
+            <li><a href="#">{{ e.name }}</a></li>
+          {% endfor %}
+
         </ul>
       </div> <button class="btn" type="button">Check-In</button>
     </div>
