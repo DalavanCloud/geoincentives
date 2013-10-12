@@ -72,7 +72,7 @@ def checkin(request):
     )
 
 @csrf_protect
-def signup(request):
+def signup(request, type=1):
     context = { 'request': request}
     context.update(csrf(request))
 
@@ -96,7 +96,8 @@ def signup(request):
                 state=form.cleaned_data['state'],
                 zipcode=form.cleaned_data['zipcode'],
                 school=form.cleaned_data['school'],
-                birthdate=form.cleaned_data['birthdate']
+                birthdate=form.cleaned_data['birthdate'],
+                type=type
             )
             user.save()
 
