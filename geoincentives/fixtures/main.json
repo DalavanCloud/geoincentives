@@ -49,48 +49,6 @@
   "model": "geoincentives.event", 
   "fields": {
     "status": "1", 
-    "city": "Sunnyvale", 
-    "verified": false, 
-    "name": "Kansas", 
-    "recurring": false, 
-    "start_time": "1234", 
-    "zipcode": "94087", 
-    "longitude": -98.380173, 
-    "latitude": 38.484726, 
-    "state": "California", 
-    "point_value": 300, 
-    "end_time": "1234", 
-    "address": "125 Debussy Terrace", 
-    "date": "2013-10-12", 
-    "type": null
-  }
-},
-{
-  "pk": 3, 
-  "model": "geoincentives.event", 
-  "fields": {
-    "status": "1", 
-    "city": "Sunnyvale", 
-    "verified": false, 
-    "name": "Santa Cruz", 
-    "recurring": false, 
-    "start_time": "1234", 
-    "zipcode": "94087", 
-    "longitude": -122.008614, 
-    "latitude": 37.037128, 
-    "state": "California", 
-    "point_value": 400, 
-    "end_time": "1234", 
-    "address": "125 Debussy Terrace", 
-    "date": "2013-10-12", 
-    "type": null
-  }
-},
-{
-  "pk": 4, 
-  "model": "geoincentives.event", 
-  "fields": {
-    "status": "1", 
     "city": "San Jose", 
     "verified": false, 
     "name": "Abraham Lincoln High School", 
@@ -108,7 +66,7 @@
   }
 },
 {
-  "pk": 5, 
+  "pk": 3, 
   "model": "geoincentives.event", 
   "fields": {
     "status": "1", 
@@ -129,7 +87,7 @@
   }
 },
 {
-  "pk": 6, 
+  "pk": 4, 
   "model": "geoincentives.event", 
   "fields": {
     "status": "1", 
@@ -150,7 +108,7 @@
   }
 },
 {
-  "pk": 7, 
+  "pk": 5, 
   "model": "geoincentives.event", 
   "fields": {
     "status": "1", 
