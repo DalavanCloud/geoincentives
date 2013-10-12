@@ -25,9 +25,11 @@
       </div>
       <div class="form-group">
       </div>
-      <form action="/signup" method="post" class="navbar-form navbar-left pull-left">
+      <form action="/signup/" method="post" class="navbar-form navbar-left pull-left">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
           {{ signup_form.first_name|safe }}
           {{ signup_form.last_name|safe }}
+          {{ signup_form.username|safe }}
           {{ signup_form.birthdate|safe }}
           {{ signup_form.password|safe }}
           {{ signup_form.email|safe }}

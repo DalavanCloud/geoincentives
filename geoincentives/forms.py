@@ -21,7 +21,7 @@ class SignupForm(ModelForm):
             'state': forms.TextInput(attrs={'placeholder': 'State', 'class': 'form-control GINGER_SOFATWARE_control', }),
             'zipcode': forms.TextInput(attrs={'placeholder': 'Zip Code', 'class': 'form-control GINGER_SOFATWARE_control', }),
             'school': forms.TextInput(attrs={'placeholder': 'School', 'class': 'form-control GINGER_SOFATWARE_control', }),
-            'birthdate': forms.TextInput(attrs={'placeholder': 'Birth Date', 'class': 'form-control GINGER_SOFATWARE_control', }),
+            'birthdate': forms.DateInput(format="%m/%d/%y", attrs={'placeholder': 'Birth Date mm/dd/yyyy', 'class': 'form-control GINGER_SOFATWARE_control', }),
         }
 
 
