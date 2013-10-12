@@ -63,7 +63,7 @@ def checkin(request):
     cur_lng = float(-121.9227413)
     cur_lat = float(37.3768341)
 
-    events = Event.objects.raw('select * from geoincentives_event where ((latitude - %(cur_lat)s) * (latitude - %(cur_lat)s)) + ((longitude - %(cur_lng)s * (longitude - %(cur_lng)s)) < )' % { 'cur_lat': cur_lat, 'cur_lng': cur_lng})
+    events = Event.objects.raw('select * from geoincentives_event where ((latitude - %(cur_lat)s) * (latitude - %(cur_lat)s)) + ((longitude - %(cur_lng)s * (longitude - %(cur_lng)s)) < 200)' % { 'cur_lat': cur_lat, 'cur_lng': cur_lng})
     #((cur_lat - 37.3768341) * (cur_lat - 37.3768341)) + ((cur_lng - -121.9227413 * (cur_lng - -121.9227413)) < 200)
     #from IPython import embed; embed()
   
