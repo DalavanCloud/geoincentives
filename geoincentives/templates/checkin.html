@@ -16,7 +16,7 @@
         {% for e in events %}
         <div class="span8">
             <div class="list-group">
-              <a href="#" class="list-group-item event_clicks" data="{{ e.id }}">{{ e.name }}</a>
+              <a href="#" class="list-group-item event_clicks" data="{{ e.id }}">{{ e.name }} ({{ e.point_value }})</a>
             </div>
         </div>
         {% endfor %}
