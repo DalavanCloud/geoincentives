@@ -1,11 +1,12 @@
 from coffin.shortcuts import render_to_response as jinja2_render_to_response
-#from geoincentives.forms import SignupForm
+from geoincentives.forms import SignupForm
 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.models import User as DjangoUser
 
 from geoincentives.models import User
 
@@ -41,7 +42,26 @@ def signup(request):
         form = SignupForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            django_user = DjangoUser.objects.create_user(
+                form.cleaned_data['username'],
+                form.cleaned_data['email'],
+                form.cleaned_data['password'])
+
+            django_user.first_name = form.cleaned_data['first_name']
+            django_user.last_name = form.cleaned_data['last_name']
+            django_user.save()
+
+            user = User(
+                auth_user=django_user,
+                address=form.cleaned_data['address'],
+                city=form.cleaned_data['city'],
+                state=form.cleaned_data['state'],
+                zipcode=form.cleaned_data['zipcode'],
+                school=form.cleaned_data['school'],
+                birthdate=form.cleaned_data['birthdate']
+            )
+            user.save()
+
             return HttpResponseRedirect('/checkin/')
 
         print form.errors

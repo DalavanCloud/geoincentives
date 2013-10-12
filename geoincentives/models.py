@@ -11,8 +11,7 @@ class User(models.Model):
         (2, 'business')
     )
 
-    user = user = models.OneToOneField(DjangoUser)
-    
+    auth_user = models.OneToOneField(DjangoUser)
     type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)

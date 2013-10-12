@@ -71,7 +71,7 @@ class SignupForm(forms.Form):
     birthdate = forms.CharField(
         max_length=100,
         label='Birth Date',
-        widget=forms.DateInput(format="%m/%d/%y", attrs={'placeholder': 'Birth Date mm/dd/yyyy', 'class': 'form-control GINGER_SOFATWARE_control', }),
+        widget=forms.DateInput(format="YYYY-MM-DD", attrs={'placeholder': 'Birth Date mm/dd/yyyy', 'class': 'form-control GINGER_SOFATWARE_control', }),
     )
 
 
