@@ -29,14 +29,15 @@
 					</tr>
 				</thead>
 				<tbody>
-
+					{% set total = 0 %}
 					{% for e in history %}
+					{% set total = total + e.event.point_value %}
 					<tr>
 						<td>
 							{{ e.date }}
 						</td>
 						<td>
-							Check-in: {{ e.event.type }}
+							Check-in: {{ e.event.name }}
 						</td>
 						<td>
 							{{ e.event.point_value }}
@@ -45,96 +46,10 @@
 							-
 						</td>
 						<td>
-							10,000
+							{{ total }}
 						</td>
 					</tr>
 					{% endfor %}
-
-					<!-- tr>
-						<td>
-							10/8/13
-						</td>
-						<td>
-							Check-in: School
-						</td>
-						<td>
-							200
-						</td>
-						<td>
-							-
-						</td>
-						<td>
-							10,200
-						</td>
-					</tr>
-					<tr>
-						<td>
-							10/9/13
-						</td>
-						<td>
-							Check-in: School
-						</td>
-						<td>
-							200
-						</td>
-						<td>
-							-
-						</td>
-						<td>
-							10,400
-						</td>
-					</tr>
-					<tr>
-						<td>
-							10/10/13
-						</td>
-						<td>
-							Check-in: School
-						</td>
-						<td>
-							200
-						</td>
-						<td>
-							-
-						</td>
-						<td>
-							10,600
-						</td>
-					</tr>
-					<tr>
-						<td>
-							10/10/13
-						</td>
-						<td>
-							Redeemed points
-						</td>
-						<td>
-							-
-						</td>
-						<td>
-							4,000
-						</td>
-						<td>
-							6,600
-						</td>
-					</tr>
-					<tr>
-						<td>
-							10/11/13
-						</td>
-						<td>
-							Check-in: School
-						</td>
-						<td>
-							200
-						</td>
-						<td>
-							-
-						</td>
-						<td>
-							6,800
-						</td>
-					</tr -->
 				</tbody>
 			</table> <button class="btn btn-primary pull-right" type="button">Redeem</button>
 		</div>
