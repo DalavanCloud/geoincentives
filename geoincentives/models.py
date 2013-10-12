@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User as DjangoUser
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import UserManager
 
@@ -10,8 +11,9 @@ class User(models.Model):
         (2, 'business')
     )
 
+    user = user = models.OneToOneField(DjangoUser)
+    
     type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
-
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)
@@ -50,7 +52,7 @@ class Event(models.Model):
     longitude = models.FloatField()
 
 class UserEvent(models.Model):
-    user = models.ForeignKey(GeoUser, null=True, blank=True)
+    user = models.ForeignKey(User, null=True, blank=True)
     event = models.ForeignKey(Event, null=True, blank=True)
     date = models.DateField()
 

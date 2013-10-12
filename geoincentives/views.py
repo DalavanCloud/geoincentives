@@ -1,5 +1,5 @@
 from coffin.shortcuts import render_to_response as jinja2_render_to_response
-from geoincentives.forms import SignupForm
+#from geoincentives.forms import SignupForm
 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -24,13 +24,8 @@ def checkin(request):
     print request.session
     #from IPython import embed; embed()
 
-<<<<<<< HEAD
     events = [] #request.user.get_nearby_events()
-=======
-    # events = [] request.user.get_nearby_events()
->>>>>>> 67c4cf232e199489a6a7de958ddfe8c864241931
 
-    events = []
     return jinja2_render_to_response(
         'checkin.html', {
             'events': events,
