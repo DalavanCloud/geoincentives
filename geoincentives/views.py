@@ -20,6 +20,40 @@ def home(request):
     )
 
 @login_required(login_url='/login/')
+def history(request):
+
+
+    events = [] #request.user.get_nearby_events()
+
+    return jinja2_render_to_response(
+        'eventhistory.html', {
+            'events': events,
+        }
+    )
+
+@login_required(login_url='/login/')
+def useraccount(request):
+
+
+    return jinja2_render_to_response(
+        'useraccount.html', {
+            #'events': events,
+        }
+    )
+
+@login_required(login_url='/login/')
+def redemption(request):
+
+
+    events = [] #request.user.get_nearby_events()
+
+    return jinja2_render_to_response(
+        'redemption.html', {
+            'events': events,
+        }
+    )
+
+@login_required(login_url='/login/')
 def checkin(request):
 
     print request.session

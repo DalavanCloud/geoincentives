@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3">
+			<ul class="nav nav-list">
+				<li class="active">
+					<a href="#">Check-In</a>
+				</li>
+				<li>
+					<a href="#">Points</a>
+				</li>
+				<li>
+					<a href="#">Redeem</a>
+				</li>
+				<li>
+					<a href="#">Profile</a>
+				</li>
+				<li class="divider">
+				</li>
+				<li>
+					<a href="#">Help</a>
+				</li>
+			</ul>
+		</div>
+		<div class="span9">
+			<form>
+				<fieldset>
+					 <legend>My Account</legend> <label>Change Password</label><input type="text"> <label>Change Email</label><input type="text"> <label>Change Address</label><input type="text"> <!--><span class="help-block">Add PayPal Account</span> <button type="submit" class="btn">Change Me!</button><-->
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+{% endblock %}
