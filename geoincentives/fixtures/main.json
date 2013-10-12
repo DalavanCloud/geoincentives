@@ -1,0 +1,642 @@
+[
+{
+  "pk": 1, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "permission", 
+    "name": "permission", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 2, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "group", 
+    "name": "group", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 3, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "user", 
+    "name": "user", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 4, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "contenttype", 
+    "name": "content type", 
+    "app_label": "contenttypes"
+  }
+},
+{
+  "pk": 5, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "session", 
+    "name": "session", 
+    "app_label": "sessions"
+  }
+},
+{
+  "pk": 6, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "site", 
+    "name": "site", 
+    "app_label": "sites"
+  }
+},
+{
+  "pk": 7, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "logentry", 
+    "name": "log entry", 
+    "app_label": "admin"
+  }
+},
+{
+  "pk": 8, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "user", 
+    "name": "user", 
+    "app_label": "geoincentives"
+  }
+},
+{
+  "pk": 9, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "eventtype", 
+    "name": "event type", 
+    "app_label": "geoincentives"
+  }
+},
+{
+  "pk": 10, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "event", 
+    "name": "event", 
+    "app_label": "geoincentives"
+  }
+},
+{
+  "pk": 11, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "userevent", 
+    "name": "user event", 
+    "app_label": "geoincentives"
+  }
+},
+{
+  "pk": 12, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "reward", 
+    "name": "reward", 
+    "app_label": "geoincentives"
+  }
+},
+{
+  "pk": "ezggi1bqwyf5xtvlfgkj61z22zhk6yhm", 
+  "model": "sessions.session", 
+  "fields": {
+    "expire_date": "2013-10-26T19:07:57.777Z", 
+    "session_data": "NzdmY2U5MTk5NzJkNDI1MmRlN2RiZThjZGM3ODg2ODg4ZjhkNjUwZjqAAn1xAVgKAAAAdGVzdGNvb2tpZVgGAAAAd29ya2VkcQJzLg=="
+  }
+},
+{
+  "pk": 1, 
+  "model": "sites.site", 
+  "fields": {
+    "domain": "example.com", 
+    "name": "example.com"
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_permission", 
+    "name": "Can add permission", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_permission", 
+    "name": "Can change permission", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_permission", 
+    "name": "Can delete permission", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 4, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_group", 
+    "name": "Can add group", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 5, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_group", 
+    "name": "Can change group", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 6, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_group", 
+    "name": "Can delete group", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 7, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_user", 
+    "name": "Can add user", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 8, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_user", 
+    "name": "Can change user", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 9, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_user", 
+    "name": "Can delete user", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 10, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_contenttype", 
+    "name": "Can add content type", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 11, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_contenttype", 
+    "name": "Can change content type", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 12, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_contenttype", 
+    "name": "Can delete content type", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 13, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_session", 
+    "name": "Can add session", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 14, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_session", 
+    "name": "Can change session", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 15, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_session", 
+    "name": "Can delete session", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 16, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_site", 
+    "name": "Can add site", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 17, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_site", 
+    "name": "Can change site", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 18, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_site", 
+    "name": "Can delete site", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 19, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_logentry", 
+    "name": "Can add log entry", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 20, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_logentry", 
+    "name": "Can change log entry", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 21, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_logentry", 
+    "name": "Can delete log entry", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 22, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_user", 
+    "name": "Can add user", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 23, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_user", 
+    "name": "Can change user", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 24, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_user", 
+    "name": "Can delete user", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 25, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_eventtype", 
+    "name": "Can add event type", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 26, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_eventtype", 
+    "name": "Can change event type", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 27, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_eventtype", 
+    "name": "Can delete event type", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 28, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_event", 
+    "name": "Can add event", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 29, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_event", 
+    "name": "Can change event", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 30, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_event", 
+    "name": "Can delete event", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 31, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_userevent", 
+    "name": "Can add user event", 
+    "content_type": 11
+  }
+},
+{
+  "pk": 32, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_userevent", 
+    "name": "Can change user event", 
+    "content_type": 11
+  }
+},
+{
+  "pk": 33, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_userevent", 
+    "name": "Can delete user event", 
+    "content_type": 11
+  }
+},
+{
+  "pk": 34, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_reward", 
+    "name": "Can add reward", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 35, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_reward", 
+    "name": "Can change reward", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 36, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_reward", 
+    "name": "Can delete reward", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "admin", 
+    "first_name": "", 
+    "last_name": "", 
+    "is_active": true, 
+    "is_superuser": true, 
+    "is_staff": true, 
+    "last_login": "2013-10-12T19:08:21.689Z", 
+    "groups": [], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$10000$Wn9RryeSMpti$KROTw+gY90y0Mi698reAFgsVf6oxTvMmuKk41DojAss=", 
+    "email": "admin@ebay.com", 
+    "date_joined": "2013-10-12T19:08:21.689Z"
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "joe", 
+    "first_name": "", 
+    "last_name": "", 
+    "is_active": true, 
+    "is_superuser": true, 
+    "is_staff": true, 
+    "last_login": "2013-10-12T19:08:35.376Z", 
+    "groups": [], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$10000$OtAmkdBP5TMz$ZyzIQdEvRRuKF6XRQqkxnnVZOKedgs9ryB/7RWCLj4g=", 
+    "email": "joe@ebay.com", 
+    "date_joined": "2013-10-12T19:08:35.376Z"
+  }
+},
+{
+  "pk": 1, 
+  "model": "geoincentives.user", 
+  "fields": {
+    "city": "94087", 
+    "school": "Del Mar High School", 
+    "company": null, 
+    "zipcode": "94087", 
+    "birthdate": "1988-03-08", 
+    "state": "California", 
+    "points": null, 
+    "address": "125 Debussy, Sunnyvale", 
+    "auth_user": 2, 
+    "type": "1"
+  }
+},
+{
+  "pk": 1, 
+  "model": "geoincentives.eventtype", 
+  "fields": {
+    "max_checkin": 10, 
+    "name": "School"
+  }
+},
+{
+  "pk": 1, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "Sunnyvale", 
+    "verified": false, 
+    "name": "Paypal", 
+    "recurring": false, 
+    "start_time": "12", 
+    "zipcode": "94087", 
+    "longitude": -121.9227413, 
+    "latitude": 37.3768341, 
+    "state": "California", 
+    "point_value": 100, 
+    "end_time": "12", 
+    "address": "125 Debussy Terrace", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 2, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Abraham Lincoln High School", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.92422, 
+    "latitude": 37.32914, 
+    "state": "California", 
+    "point_value": 100, 
+    "end_time": "1234", 
+    "address": "555 Dana Avenue", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 3, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Bellarmine College Preparatory", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.91917, 
+    "latitude": 37.34249, 
+    "state": "California", 
+    "point_value": 300, 
+    "end_time": "1234", 
+    "address": "960 West Hedding Street", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 4, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Notre Dame High School", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.8823, 
+    "latitude": 37.3282, 
+    "state": "California", 
+    "point_value": 300, 
+    "end_time": "1234", 
+    "address": "596 South 2nd Street", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 5, 
+  "model": "geoincentives.event", 
+  "fields": {
+    "status": "1", 
+    "city": "San Jose", 
+    "verified": false, 
+    "name": "Del Mar High School", 
+    "recurring": false, 
+    "start_time": "1234", 
+    "zipcode": "95126", 
+    "longitude": -121.92912, 
+    "latitude": 37.30494, 
+    "state": "California", 
+    "point_value": 100, 
+    "end_time": "1234", 
+    "address": "1224 Del Mar Avenue", 
+    "date": "2013-10-12", 
+    "type": null
+  }
+},
+{
+  "pk": 1, 
+  "model": "geoincentives.userevent", 
+  "fields": {
+    "date": "2013-10-12", 
+    "user": 2, 
+    "event": 4
+  }
+},
+{
+  "pk": 2, 
+  "model": "geoincentives.userevent", 
+  "fields": {
+    "date": "2013-10-12", 
+    "user": 2, 
+    "event": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "geoincentives.userevent", 
+  "fields": {
+    "date": "2013-10-12", 
+    "user": 2, 
+    "event": 5
+  }
+}
+]

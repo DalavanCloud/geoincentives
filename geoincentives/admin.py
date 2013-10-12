@@ -57,7 +57,7 @@ class RewardAdmin(admin.ModelAdmin):
 # Re-register UserAdmin
 #admin.site.unregister(User)
 
-admin.site.register(User) #, UserAdmin)
+admin.site.register(User) #UserAdmin)
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(UserEvent, UserEventAdmin)

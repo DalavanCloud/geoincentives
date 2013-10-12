@@ -11,17 +11,38 @@
       <h3 class="text-left">
         Where are you checking in?
       </h3>
-      <div class="btn-group">
-         <button class="btn">Mt. Pleasant High School</button> <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
+      <div class="row-fluid">
+        <p></p>
 
-          {% for e in events %}
-            <li><a href="#">{{ e.name }}</a></li>
-          {% endfor %}
-
-        </ul>
-      </div> <button class="btn" type="button">Check-In</button>
+        {% for e in events %}
+        <div class="span8">
+            <div class="list-group">
+              <a href="#" class="list-group-item event_clicks" data="{{ e.id }}">{{ e.name }}</a>
+            </div>
+        </div>
+        {% endfor %}
+        
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+$(".event_clicks").click(function(e){  
+
+    $.ajax( {
+        type: 'GET',
+        url: '/ajax_checkin/',
+        data: {'event': e.target.getAttribute('data')},
+
+        success: function ( data, textStatus, jqXHR) {
+            e.target.innerHTML='<b>Checked In!</b>';
+        },
+
+        error: function (jqXHR, textStatus, errorThrown) {
+            debug("error: " + textStatus);
+        }
+    } );
+});
+</script>
 {% endblock %}
