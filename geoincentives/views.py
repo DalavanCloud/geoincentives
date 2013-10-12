@@ -1,7 +1,12 @@
 import datetime
 
 from coffin.shortcuts import render_to_response as jinja2_render_to_response
-from geoincentives.forms import SignupForm
+from geoincentives.forms import SignupForm, PaypalSignupForm
+import pycurl
+import urllib
+import StringIO
+import json
+import hashlib
 
 from django.http import HttpResponseRedirect, HttpResponse
 #from django.contrib.auth import authenticate, login
@@ -9,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.models import User as DjangoUser
+from django.contrib.auth import authenticate, login
 
 from geoincentives.models import User, Event, UserEvent
 
@@ -103,6 +109,7 @@ def signup(request, type=None):
     if not type:
         type = 1
 
+    request.session['type'] = int(type)
     context = { 'request': request, 'type': int(type), 'is_authenticated': request.user.is_authenticated() }
     context.update(csrf(request))
 
@@ -143,3 +150,128 @@ def signup(request, type=None):
     return jinja2_render_to_response(
         'signup.html', context
     )
+
+@csrf_protect
+def complete_signup(request):
+    context = { 'request': request, 'is_authenticated': request.user.is_authenticated() }
+    context.update(csrf(request))
+
+    if request.method == 'POST':
+        form = PaypalSignupForm(request.POST)
+
+        if form.is_valid():
+            django_user = authenticate(username=request.session['paypal_user'], password=request.session['paypal_pass'])
+            login(request, django_user)
+            #django_user = DjangoUser.objects.get(email=request.session['paypal_user'])
+            user = User.objects.get(auth_user=django_user)
+
+            if (request.session['type'] == 1):
+                user.school = form.cleaned_data['school']
+            else:
+                user.company = form.cleaned_data['company']
+
+            user.save()
+
+
+            return HttpResponse(
+                '<html><head><script>' +
+                'window.onunload = refreshParent;' +
+                'function refreshParent() {' +
+                'window.opener.location = "/login/";' +
+                '} window.opener.location = "/checkin/"; window.close();</script></head></html>')
+
+        print form.errors
+
+    context['signup_form'] = SignupForm()
+
+    return jinja2_render_to_response(
+        'signup.html', context
+    )
+
+def paypal(request):
+    print 'code: %s' % request.GET['code']
+    context = { 'request': request, 'is_authenticated': request.user.is_authenticated() }
+    curl = pycurl.Curl()
+    curl.setopt(pycurl.POST, True)
+    postdata = urllib.urlencode({
+        'client_id': 'AfaKGBALBiCoGmBD1EXDHASb30sc7iKSwRfgtTq5PXXKP2NzT5AF8WxI4Hl7',
+        'client_secret': 'EHyhKxCofRT6AgcxZhcLtE6PafygLbbDngClEoSwlwVG1kkZ5qZExpHnj6fp',
+        'grant_type': 'authorization_code',
+        'code': request.GET['code']})
+    curl.setopt(pycurl.POSTFIELDS, postdata)
+    curl.setopt(pycurl.VERBOSE, True)
+    curl.setopt(pycurl.URL, str('https://api.sandbox.paypal.com/v1/identity/openidconnect/tokenservice'))
+    curl.setopt(pycurl.SSL_VERIFYPEER, False)
+
+    response_header = StringIO.StringIO()
+    curl.setopt(pycurl.HEADERFUNCTION, response_header.write)
+    response_body = StringIO.StringIO()
+    curl.setopt(pycurl.WRITEFUNCTION, response_body.write)
+
+    curl.perform()
+    response_code = curl.getinfo(pycurl.HTTP_CODE)
+    print response_code
+
+    response_body = response_body.getvalue()
+    print response_body
+    response_data = json.loads(response_body)
+
+
+    #$ch = curl_init( "https://api.sandbox.paypal.com/v1/identity/openidconnect/userinfo/?schema=openid&access_token=" . $access_token );
+    curl = pycurl.Curl()
+
+    curl.setopt(pycurl.VERBOSE, True)
+    curl.setopt(pycurl.URL, str("https://api.sandbox.paypal.com/v1/identity/openidconnect/userinfo/?schema=openid&access_token=%s" % response_data['access_token']))
+    curl.setopt(pycurl.SSL_VERIFYPEER, False)
+
+    response_header = StringIO.StringIO()
+    curl.setopt(pycurl.HEADERFUNCTION, response_header.write)
+    response_body = StringIO.StringIO()
+    curl.setopt(pycurl.WRITEFUNCTION, response_body.write)
+
+    curl.perform()
+    response_code = curl.getinfo(pycurl.HTTP_CODE)
+    print response_code
+
+    response_body = response_body.getvalue()
+    print response_body
+
+    #{"family_name":"Weigel","name":"John Weigel","account_type":"PERSONAL","given_name":"John","address":{"postal_code":"95131","locality":"San Jose","region":"CA","country":"US","street_address":"1 Main St"},"verified_account":"true","language":"en_US","zoneinfo":"America/Los_Angeles","locale":"en_US","phone_number":"4089192640","email":"test@geoi.com","account_creation_date":"2013-10-12","age_range":"31-35","birthday":"1982-08-02"}
+    response_data = json.loads(response_body)
+
+    try:
+        DjangoUser.objects.get(username=response_data['email'])
+    except DjangoUser.DoesNotExist:
+        print 'Creating account'
+
+        passwd = hashlib.sha224(response_data['email']).hexdigest()
+
+        django_user = DjangoUser.objects.create_user(
+            response_data['email'],
+            response_data['email'],
+            passwd)
+
+        user = User(
+            auth_user=django_user,
+            address=response_data['address']['street_address'],
+            city=response_data['address']['locality'],
+            state=response_data['address']['region'],
+            zipcode=response_data['address']['postal_code'],
+            type=request.session.get('type', 1)
+        )
+        user.save()
+        request.session['paypal_user'] = django_user.email
+        request.session['paypal_pass'] = passwd
+
+
+        context.update(csrf(request))
+        context['paypal_signup_form'] = PaypalSignupForm()
+        return jinja2_render_to_response(
+            'paypal_signup.html', context
+        )
+
+
+    #print request.POST
+    return HttpResponse('test')
+
+

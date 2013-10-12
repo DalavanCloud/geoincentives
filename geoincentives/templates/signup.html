@@ -22,7 +22,31 @@
     </div>
     <div class="container">
       <div class="form-group">
+
+
+        <span id="myContainer"></span>
+        <script src="https://www.paypalobjects.com/js/external/api.js"></script>
+        <script>
+        paypal.use( ["login"], function(login) {
+          login.render ({
+            "appid": "AfaKGBALBiCoGmBD1EXDHASb30sc7iKSwRfgtTq5PXXKP2NzT5AF8WxI4Hl7",
+            "scopes": "profile email address phone https://uri.paypal.com/services/paypalattributes",
+            "containerid": "myContainer",
+            "locale": "en-us",
+            "authend": 'sandbox',
+            "returnurl": "http://127.0.0.1:8080/paypal/"
+          });
+        });
+        </script>
+
+
       </div>
+
+      <div class="form-group">
+        - OR -
+      </div>
+
+
       <div class="form-group">
       </div>
       <form action="{{ request.path }}" method="post" class="navbar-form navbar-left pull-left">

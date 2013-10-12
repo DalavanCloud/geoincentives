@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+
+
+
+          <form action="/complete-signup/" method="post" class="navbar-form navbar-left pull-left">
+            <div class="form-group">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
+
+            {% if request.session.type != 1 %}
+                {{ paypal_signup_form.company|safe }}
+            {% endif %}
+
+            {% if request.session.type == 1 %}
+              {{ paypal_signup_form.school|safe }}
+            {% endif %}
+
+            </div>
+            <input type="submit" name="Sign me up" />
+        </form>
+{% endblock %}

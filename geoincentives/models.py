@@ -24,7 +24,7 @@ class User(models.Model):
     points = models.IntegerField(null=True, blank=True)
 
     def __unicode__(self):
-            return u'%s %s' % (self.auth_user.first_name, self.auth_user.last_name)
+            return u'%s' % self.auth_user.email
 
 class EventType(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False)
