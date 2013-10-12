@@ -30,3 +30,10 @@ def checkin(request):
             'events': events,
         }
     )
+
+def signup(request):
+    return jinja2_render_to_response(
+        'signup.html', {
+            'login_form': UserLoginForm()
+        }
+    )

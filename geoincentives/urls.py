@@ -11,6 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns('geoincentives.views',
     url(r'^$', 'home', name='home'),
     url(r'^checkin/$', 'checkin', name='checkin'),
+    url(r'^signup/$', 'signup', name='signup'),
 
     # Examples:
     # url(r'^$', 'geoincentives.views.home', name='home'),
