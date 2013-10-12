@@ -1,5 +1,5 @@
 from coffin.shortcuts import render_to_response as jinja2_render_to_response
-from geoincentives.forms import UserLoginForm
+from geoincentives.forms import SignupForm
 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -32,8 +32,18 @@ def checkin(request):
     )
 
 def signup(request):
+
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/checkin')
+
+
     return jinja2_render_to_response(
         'signup.html', {
+            'signup_form': SignupForm(),
             'login_form': UserLoginForm()
         }
     )
