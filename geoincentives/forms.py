@@ -1,22 +1,11 @@
 from django.forms import ModelForm
-from geoincentives.models import User
+from geoincentives.models import GeoUser
 from django import forms
 
 
-class UserLoginForm(ModelForm):
-    class Meta:
-        model = User
-        fields = (
-            'email', 'password'
-        )
-        widgets = {
-            'email': forms.TextInput(attrs={'placeholder': 'Email', 'class': 'form-control', }),
-            'password': forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control', })
-        }
-
 class SignupForm(ModelForm):
     class Meta:
-        model = User
+        model = GeoUser
         fields = (
             'username', 'password', 'email', 'first_name', 'last_name',
             'address', 'city', 'state', 'zipcode', 'school', 'birthdate'

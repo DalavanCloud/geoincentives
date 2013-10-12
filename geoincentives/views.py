@@ -23,7 +23,7 @@ def checkin(request):
     print request.session
     from IPython import embed; embed()
 
-    events = [] request.user.get_nearby_events()
+    events = [] #request.user.get_nearby_events()
 
     return jinja2_render_to_response(
         'checkin.html', {

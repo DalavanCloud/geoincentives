@@ -1,5 +1,6 @@
 from django.contrib import admin
-from geoincentives.models import User, EventType, Event, Reward
+from django.contrib.auth.models import User
+from geoincentives.models import GeoUser, EventType, Event, Reward
 
 class UserAdmin(admin.ModelAdmin):
     list_display = (
@@ -37,7 +38,19 @@ class RewardAdmin(admin.ModelAdmin):
         'name',
     )
 
+class GeoUserInline(admin.StackedInline):
+    model = GeoUser
+    can_delete = False
+    verbose_name_plural = 'user'
+
+# Define a new User admin
+class UserAdmin(UserAdmin):
+    inlines = (GeoUserInline, )
+
+# Re-register UserAdmin
+admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
 admin.site.register(Event, EventAdmin)
 admin.site.register(EventType, EventTypeAdmin)
 admin.site.register(Reward, RewardAdmin)

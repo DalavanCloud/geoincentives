@@ -1,24 +1,29 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import UserManager
+
 import hashlib
 
-class User(models.Model):
+class GeoUser(models.Model):
     USER_TYPE = (
         (1, 'student'),
         (2, 'business')
     )
 
-    username = models.CharField(max_length=100, null=True, blank=False)
-    password = models.CharField(max_length=100, null=True, blank=False)
+    #username = models.CharField(max_length=100, null=True, blank=False)
+    #password = models.CharField(max_length=100, null=True, blank=False)
     type = models.CharField(max_length=100, null=True, blank=False, choices=USER_TYPE)
-    email = models.CharField(max_length=255, null=True, db_index=True, blank=False)
-    first_name = models.CharField(max_length=128, null=True, blank=False)
-    last_name = models.CharField(max_length=128, null=True, blank=False)
+    #email = models.CharField(max_length=255, null=True, db_index=True, unique=True, blank=False)
+    #first_name = models.CharField(max_length=128, null=True, blank=False)
+    #last_name = models.CharField(max_length=128, null=True, blank=False)
     address = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     city = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     state = models.CharField(max_length=30, null=True, db_index=True, blank=False)
     zipcode = models.CharField(max_length=5, null=True, db_index=True, blank=False)
     school = models.CharField(max_length=255, null=True, db_index=True, blank=False)
     birthdate = models.DateField(blank=True, null=True)
+
+    #USERNAME_FIELD = 'username'
 
     @classmethod
     def hash_password(cls, password):
@@ -51,7 +56,7 @@ class Event(models.Model):
     longitude = models.FloatField()
 
 class UserEvent(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(GeoUser, null=True, blank=True)
     event = models.ForeignKey(Event, null=True, blank=True)
     date = models.DateField()
 

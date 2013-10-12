@@ -64,7 +64,6 @@ STATIC_ROOT = ''
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
-
 # Additional locations of static files
 STATICFILES_DIRS = (
     '%s/static' % projectdir,
