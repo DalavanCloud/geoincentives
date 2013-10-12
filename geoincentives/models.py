@@ -40,7 +40,7 @@ class Event(models.Model):
 
     name = models.CharField(max_length=255, null=True, blank=False)
     type = models.ForeignKey(EventType, null=True, blank=True)
-    status = models.CharField(max_length=100, null=True, blank=False, choices=EVENT_STATUS)
+    status = models.IntegerField(max_length=100, null=True, blank=False, choices=EVENT_STATUS)
     start_time = models.CharField(max_length=5, null=True, blank=False)
     end_time = models.CharField(max_length=5, null=True, blank=False)
     date = models.DateField()

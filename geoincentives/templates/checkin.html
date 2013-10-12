@@ -14,15 +14,11 @@
       <div class="btn-group">
          <button class="btn">Mt. Pleasant High School</button> <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li>
-            <a href="#">Mt. Pleasant High School</a>
-          </li>
-          <li>
-            <a href="#">Andrew Hill High School</a>
-          </li>
-          <li>
-            <a href="#">Independence High school</a>
-          </li>
+
+          {% for e in events %}
+            <li><a href="#">{{ e.name }}</a></li>
+          {% endfor %}
+
         </ul>
       </div> <button class="btn" type="button">Check-In</button>
     </div>
